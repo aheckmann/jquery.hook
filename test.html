@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="UTF-8">
+	<title>Test jquery.hook</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+	<script src="jquery.hook.js"></script>
+	<script>
+		$(function(){
+			
+			$.hook('addClass hide');
+			
+			$("#clickme").bind('onbeforeaddClass', function (e) {
+				alert('onbeforeaddClass fired :' + ('onbeforeaddClass' === e.type));
+			})	
+			.bind('onaddClass', function (e) {
+				alert('onaddClass fired :' + ('onaddClass'=== e.type));
+			})	
+			.bind('onafteraddClass', function (e) {
+				alert('onafteraddClass fired : ' + ('onafteraddClass' === e.type)); //+ '\n' + $(this).is('.newclass'));
+			});
+			
+			$("#clickme").addClass('newclass'); // 3 alerts
+			
+			$.unhook('addClass');
+			
+			$("#clickme").addClass('diffClass'); // no alerts but class is still added
+			alert( "the button has class 'diffClass' : " + $("#clickme").is('.diffClass') ); // alerts true
+			
+			
+			
+			$("#clickme").bind('onafterhide', function () {
+				alert("The button is now hidden.");
+				
+			}).bind('click', function () {
+				$(this).hide(); // alerts "The button is now hidden."
+			});
+			
+			
+		});
+	</script>
+</head>
+<body>
+	<button id="clickme" name="clickme" type="button">click me</button>
+</body>
+</html>
