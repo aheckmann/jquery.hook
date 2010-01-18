@@ -35,11 +35,10 @@
 */
 ;(function($){
 	$.hook = function (fns) {
-		if (typeof fns === 'string') {
-			fns = fns.split(' ');
-		} else {
-			fns = $.makeArray(fns);
-		}
+		fns = typeof fns === 'string' ? 
+			fns.split(' ') : 
+			$.makeArray(fns)
+		;
 		
 		jQuery.each( fns, function (i, method) {
 			var old = $.fn[ method ];
@@ -62,11 +61,10 @@
 	};
 	
 	$.unhook = function (fns) {
-		if (typeof fns === 'string') {
-			fns = fns.split(' ');
-		} else {
-			fns = $.makeArray(fns);
-		}
+		fns = typeof fns === 'string' ? 
+			fns.split(' ') : 
+			$.makeArray(fns)
+		;
 		
 		jQuery.each( $.makeArray(fns), function (i, method) {
 			var cur = $.fn[ method ];
