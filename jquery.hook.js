@@ -24,7 +24,7 @@
 *       .bind('onshow', function (e) { alert(e.type);})
 *       .bind('onaftershow', function (e) { alert(e.type);})
 *       .bind('onafterhide', function (e) { alert("The element is now hidden.");});
-*   jQuery(selector).show() 
+*   jQuery(selector).show().hide()
 *        -> alerts 'onbeforeshow' then alerts 'onshow', then alerts 'onaftershow',
 *             then after the element is hidden alerts 'The element is now hidden.'
 *
