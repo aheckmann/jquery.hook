@@ -23,6 +23,7 @@ Pass in a string or array of method names you want to hook into with `onbefore`,
 	jQuery(selector).hide();
 		-> after the element is hidden alerts 'The element is now hidden.'
 
+
 You can also unhook what you've hooked into by calling `jQuery.unhook()` passing in your string or array of method names to unhook.
 
 	jQuery.unhook('show hide');
